@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Project 1</string>
+    <string name="content_Description">a simple message icon</string>
+    <string name="placeholder_message">Say hello!</string>
+    <string name="hint_text">ENTER YOUR NAME</string>
+    <string name="text_up" />
+    <string name="up">Update</string>
+    <string name="hui_te">Enter your name</string>
+</resources>

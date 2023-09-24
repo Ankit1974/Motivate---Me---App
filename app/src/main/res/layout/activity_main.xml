@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mian_activity_bt_update"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:background="@color/tfgdh"
+    android:contentDescription="@string/content_Description"
+    android:gravity="center_horizontal|center_vertical"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="107dp"
+        android:layout_height="82dp"
+        android:background="@color/dark_sea_green"
+        app:srcCompat="@drawable/baseline_comment_24" />
+
+    <TextView
+        android:id="@+id/main_activity_tv_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/placeholder_message"
+        android:textAlignment="center"
+        android:textColor="@color/rich_black"
+        android:textSize="34sp" />
+
+    <EditText
+        android:id="@+id/main_activity_et_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/hint_text"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/rich_black"
+        android:textColorHint="@color/white"
+        android:textStyle="normal" />
+
+    <Button
+        android:id="@+id/hjjghuk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/teal_700"
+        android:text="@string/up"
+        android:textColor="#FFEB3B"
+        android:textSize="24sp" />
+
+</LinearLayout>
