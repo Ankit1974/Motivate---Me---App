@@ -30,26 +30,15 @@
         android:textColor="@color/rich_black"
         android:textSize="34sp" />
 
-    <EditText
-        android:id="@+id/main_activity_et_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/hint_text"
-        android:inputType="text"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/rich_black"
-        android:textColorHint="@color/white"
-        android:textStyle="normal" />
-
     <Button
-        android:id="@+id/hjjghuk"
+        android:id="@+id/share_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:backgroundTint="@color/teal_700"
-        android:text="@string/up"
+        android:text="@string/share"
         android:textColor="#FFEB3B"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:onClick="shareMessage" />
 
 </LinearLayout>

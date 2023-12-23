@@ -1,39 +1,36 @@
+
 package com.example.project1
 
+
+
+
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.view.inputmethod.InputMethodManager
+import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
-    //Declare our references to view before layout inflation
-    private lateinit var name: EditText
     private lateinit var message: TextView
+    private lateinit var shareButton: Button
 
-    //override lifecylce method onCreate . this should initialize all important item for the code.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //Inflate the given layout to turn xml view in kotlin object
         setContentView(R.layout.activity_main)
+        shareButton = findViewById(R.id.share_button)
+        shareButton.setOnClickListener { shareMessage() }
+        shareButton.visibility = View.GONE
 
-        // Get a reference to the button view from our layout and set a clickListener
-        val updateButton: Button = findViewById(R.id.hjjghuk)
-        updateButton.setOnClickListener { updateMessage() }
-
-        // set the value to our declared view
-        name = findViewById(R.id.main_activity_et_name)
         message = findViewById(R.id.main_activity_tv_textview)
+
+
+        updateMessage()
     }
 
-    // get a name from an editText and display a personalized message
     private fun updateMessage() {
-        //Get the username from the editTex
-        val username = name.text
-
-        // pick a motivational message
         val motivationalMessages = listOf(
             "All our dreams can come true, if we have the courage to pursue them.",
             "The secret of getting ahead is getting started.",
@@ -42,25 +39,28 @@ class MainActivity : AppCompatActivity() {
             "Everything you can imagine is real.",
             "Smart people learn from everything and everyone, average people from their experiences, stupid people already have all the answers.",
             "Do what you feel in your heart to be right―for you’ll be criticized anyway.",
-            "Happiness is not something ready made. It comes from your own actions."
+            "Happiness is not something ready-made. It comes from your own actions."
         )
-        val index = (0..7).random()
-        val currentMessages = motivationalMessages[index]
 
-        // update the textview to display our message
-        if (username.toString() == "") {
-            message.text = "Make sure to enter your name"
-        } else {
-            message.text = "Hello $username. $currentMessages"
-        }
-        //clear the editText and use setText because editText's require an editable
-        name.setText("")
-        hidekeyboard()
+
+        val dayOfYear = Calendar.getInstance().get(Calendar.DAY_OF_YEAR)
+
+        val index = dayOfYear % motivationalMessages.size
+        val currentMessage = motivationalMessages[index]
+
+        message.text = currentMessage
+
+        shareButton.visibility = View.VISIBLE
     }
-    // hide keyboard function
 
-    private fun hidekeyboard(){
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(name.windowToken , 0)
+    // Function to share the motivational message
+    private fun shareMessage() {
+        val messageToShare = message.text.toString()
+        val shareIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, messageToShare)
+            type = "text/plain"
+        }
+        startActivity(Intent.createChooser(shareIntent, "Share via"))
     }
 }
